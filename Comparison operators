@@ -1,0 +1,19 @@
+# Comparison operators
+# John Matthew C. Bandong
+
+inputX = int(input("X: "))
+inputY = int(input("Y: "))
+
+comparisons = [
+    inputX > inputY,
+    inputX < inputY,
+    inputX >= inputY,
+    inputX <= inputY,
+    inputX == inputY,
+    inputX != inputY,
+]
+
+operators = [">", "<", "==", "!=", ">=", "<="]
+
+for i in range(len(comparisons)):
+    print(f"{inputX} {operators[i]} {inputY} = {comparisons[i]}")
