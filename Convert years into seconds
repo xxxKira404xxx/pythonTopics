@@ -1,0 +1,5 @@
+#Year to seconds converter
+#John Matthew C. Bandong
+year = int(input("Input:"))
+yearToSeconds = year * 31536000
+print(f"Output: {yearToSeconds}")
