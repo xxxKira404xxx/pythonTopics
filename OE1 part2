@@ -1,0 +1,79 @@
+# movie_ticket_system.py
+
+print("=== MOVIE TICKET SYSTEM ===")
+
+# Part A: Get inputs
+day = input("Day (weekday/weekend): ").lower()
+customer_type = input("Customer type (regular/student/senior): ").lower()
+show_time = int(input("Show time (hour in 24-hour format): "))
+tickets = int(input("Number of tickets: "))
+
+# Part D: Validate inputs
+if show_time < 9 or show_time > 22:
+    print("Invalid show time! Cinema operates from 9 to 22 only.")
+    exit()
+
+if tickets <= 0:
+    print("Invalid ticket count! Must be at least 1.")
+    exit()
+
+if day not in ["weekday", "weekend"]:
+    print("Invalid day input!")
+    exit()
+
+if customer_type not in ["regular", "student", "senior"]:
+    print("Invalid customer type!")
+    exit()
+
+# Part B: Base pricing
+if day == "weekday":
+    base_price = 200
+else:
+    base_price = 300
+
+subtotal = base_price * tickets
+total = subtotal
+
+# Part C: Apply discounts (Nested Conditionals)
+student_discount = 0
+senior_discount = 0
+matinee_discount = 0
+group_discount = 0
+
+# Customer discount
+if customer_type == "student":
+    student_discount = total * 0.20
+    total -= student_discount
+else:
+    if customer_type == "senior":
+        senior_discount = total * 0.30
+        total -= senior_discount
+
+# Matinee discount (before 12 PM)
+if show_time < 12:
+    matinee_discount = total * 0.10
+    total -= matinee_discount
+
+# Group discount
+if tickets >= 5:
+    group_discount = total * 0.05
+    total -= group_discount
+
+# Part E: Display Receipt
+print("\n--- RECEIPT ---")
+print(f"Base price: {base_price:.2f} x {tickets} = {subtotal:.2f}")
+
+if student_discount > 0:
+    print(f"Student discount (20%): -{student_discount:.2f}")
+
+if senior_discount > 0:
+    print(f"Senior discount (30%): -{senior_discount:.2f}")
+
+if matinee_discount > 0:
+    print(f"Matinee discount (10%): -{matinee_discount:.2f}")
+
+if group_discount > 0:
+    print(f"Group discount (5%): -{group_discount:.2f}")
+
+print(f"TOTAL: {total:.2f}")
+print("Thank you for your purchase!")
