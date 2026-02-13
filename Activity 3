@@ -1,0 +1,14 @@
+# temperature_checker.py
+
+# Ask user for temperature
+temperature = int(input("Enter the current temperature: "))
+
+# Check conditions
+if temperature > 30:
+    print("Hot day! Stay hydrated.")
+else:
+    print("Pleasant weather!")
+    
+# Bonus condition
+if temperature < 10:
+    print("It's very cold! Stay warm.")
