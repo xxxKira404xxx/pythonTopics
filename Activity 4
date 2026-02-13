@@ -1,0 +1,18 @@
+# eligibility_checker.py
+
+# Get user inputs
+age = int(input("Enter your age: "))
+has_id_input = input("Do you have a valid ID? (yes/no): ").lower()
+
+# Convert yes/no to boolean
+has_id = True if has_id_input == "yes" else False
+
+# Check eligibility
+if age >= 18 and has_id:
+    print("Eligible!")
+else:
+    print("Not eligible")
+
+# Bonus: Senior discount check
+if age >= 60:
+    print("You qualify for senior discount.")
