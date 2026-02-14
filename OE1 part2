@@ -5,25 +5,25 @@ print("=== MOVIE TICKET SYSTEM ===")
 day = input("Day (weekday/weekend): ").lower()
 if day not in ["weekday", "weekdays", "weekend", "weekends"]:
     print("Invalid day input!")
-    exit()
+
 
 customer_type = input("Customer type (regular/student/senior): ").lower()
 if customer_type not in ["regular", "student", "senior"]:
     print("Invalid customer type!")
-    exit()
+    break
 
 show_time = int(input("Show time (hour in 24-hour format): "))
 if show_time < 9 or show_time > 22:
     print("Invalid show time! Cinema operates from 9 to 22 only.")
-    exit()
+    break
+
 
 tickets = int(input("Number of tickets: "))
 if tickets <= 0:
     print("Invalid ticket count! Must be at least 1.")
-    exit()
+    break
 
 # Part B: Base pricing 
-# We use "in" to check for multiple valid words correctly
 if day in ["weekday", "weekdays"]:
     base_price = 200.0
 else:
@@ -36,7 +36,7 @@ total = subtotal
 student_discount = 0.20
 senior_discount = 0.30
 matinee_discount = 0.10
-group_discount = 0.05  # Changed to 0.05 (5%) to get your -64.80 result
+group_discount = 0.05  
 
 applied_student = 0.0
 applied_senior = 0.0
@@ -61,7 +61,6 @@ if tickets >= 5:
 
 # Part D: Display Receipt
 print("\n--- RECEIPT ---")
-# The :.2f inside the { } forces the two decimal zeros
 print(f"Base price: {base_price:.2f} x {tickets} = {subtotal:.2f}")
 
 if applied_student > 0:
