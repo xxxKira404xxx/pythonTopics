@@ -1,16 +1,20 @@
-# grade_calculator.py
+# grade_calculator
 
-score = float(input("Enter your score (0-100): "))
+inputScore = float(input("Enter your score (0-100): "))
+gradeA = 90
+gradeB = 80
+gradeC = 70
+gradeD = 60
 
-if score < 0 or score > 100:
+if inputScore <= 0 or inputScore >= 100:
     print("Invalid score!")
-elif score >= 90:
+elif inputScore >= gradeA:
     print("Grade: A - Excellent!")
-elif score >= 80:
+elif inputScore >= gradeB:
     print("Grade: B - Very Good!")
-elif score >= 70:
+elif inputScore >= gradeC:
     print("Grade: C - Good!")
-elif score >= 60:
+elif inputScore >= gradeD:
     print("Grade: D - Needs Improvement.")
 else:
     print("Grade: F - Failed.")
