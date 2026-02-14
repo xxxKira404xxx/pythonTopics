@@ -1,79 +1,81 @@
 # movie_ticket_system.py
-
 print("=== MOVIE TICKET SYSTEM ===")
 
 # Part A: Get inputs
 day = input("Day (weekday/weekend): ").lower()
-customer_type = input("Customer type (regular/student/senior): ").lower()
-show_time = int(input("Show time (hour in 24-hour format): "))
-tickets = int(input("Number of tickets: "))
-
-# Part D: Validate inputs
-if show_time < 9 or show_time > 22:
-    print("Invalid show time! Cinema operates from 9 to 22 only.")
-    exit()
-
-if tickets <= 0:
-    print("Invalid ticket count! Must be at least 1.")
-    exit()
-
-if day not in ["weekday", "weekend"]:
+if day not in ["weekday", "weekdays", "weekend", "weekends"]:
     print("Invalid day input!")
     exit()
 
+customer_type = input("Customer type (regular/student/senior): ").lower()
 if customer_type not in ["regular", "student", "senior"]:
     print("Invalid customer type!")
     exit()
 
-# Part B: Base pricing
-if day == "weekday":
-    base_price = 200
+show_time = int(input("Show time (hour in 24-hour format): "))
+if show_time < 9 or show_time > 22:
+    print("Invalid show time! Cinema operates from 9 to 22 only.")
+    exit()
+
+tickets = int(input("Number of tickets: "))
+if tickets <= 0:
+    print("Invalid ticket count! Must be at least 1.")
+    exit()
+
+# Part B: Base pricing 
+# We use "in" to check for multiple valid words correctly
+if day in ["weekday", "weekdays"]:
+    base_price = 200.0
 else:
-    base_price = 300
+    base_price = 300.0
 
 subtotal = base_price * tickets
 total = subtotal
 
-# Part C: Apply discounts (Nested Conditionals)
-student_discount = 0
-senior_discount = 0
-matinee_discount = 0
-group_discount = 0
+# Part C: Customer discounts
+student_discount = 0.20
+senior_discount = 0.30
+matinee_discount = 0.10
+group_discount = 0.05  # Changed to 0.05 (5%) to get your -64.80 result
 
-# Customer discount
+applied_student = 0.0
+applied_senior = 0.0
+applied_matinee = 0.0
+applied_group = 0.0
+
 if customer_type == "student":
-    student_discount = total * 0.20
-    total -= student_discount
-else:
-    if customer_type == "senior":
-        senior_discount = total * 0.30
-        total -= senior_discount
+    applied_student = total * student_discount
+    total = total - applied_student
 
-# Matinee discount (before 12 PM)
+if customer_type == "senior":
+    applied_senior = total * senior_discount
+    total = total - applied_senior
+
 if show_time < 12:
-    matinee_discount = total * 0.10
-    total -= matinee_discount
+    applied_matinee = total * matinee_discount
+    total = total - applied_matinee
 
-# Group discount
 if tickets >= 5:
-    group_discount = total * 0.05
-    total -= group_discount
+    applied_group = total * group_discount
+    total = total - applied_group
 
-# Part E: Display Receipt
+# Part D: Display Receipt
 print("\n--- RECEIPT ---")
+# The :.2f inside the { } forces the two decimal zeros
 print(f"Base price: {base_price:.2f} x {tickets} = {subtotal:.2f}")
 
-if student_discount > 0:
-    print(f"Student discount (20%): -{student_discount:.2f}")
+if applied_student > 0:
+    print(f"Student discount (20%): -{applied_student:.2f}")
 
-if senior_discount > 0:
-    print(f"Senior discount (30%): -{senior_discount:.2f}")
+if applied_senior > 0:
+    print(f"Senior discount (30%): -{applied_senior:.2f}")
 
-if matinee_discount > 0:
-    print(f"Matinee discount (10%): -{matinee_discount:.2f}")
+if applied_matinee > 0:
+    print(f"Matinee discount (10%): -{applied_matinee:.2f}")
 
-if group_discount > 0:
-    print(f"Group discount (5%): -{group_discount:.2f}")
+if applied_group > 0:
+    print(f"Group discount (5%): -{applied_group:.2f}")
 
+print("-------------------------")
 print(f"TOTAL: {total:.2f}")
 print("Thank you for your purchase!")
