@@ -1,0 +1,13 @@
+username = "JM"
+password = "pogi123"
+
+inputUser = input("Input username: ")
+inputPass = input("Input password: ")
+
+if inputUser == username:
+    if inputPass == password:
+        print("Welcome! Login Successfully!")
+    else: 
+        print("Incorrect password.")
+else:
+    print("User not found")
