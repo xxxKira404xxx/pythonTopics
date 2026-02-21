@@ -6,22 +6,20 @@ day = input("Day (weekday/weekend): ").lower()
 if day not in ["weekday", "weekdays", "weekend", "weekends"]:
     print("Invalid day input!")
 
-
-customer_type = input("Customer type (regular/student/senior): ").lower()
-if customer_type not in ["regular", "student", "senior"]:
+customerType = input("Customer type (regular/student/senior): ").lower()
+if customerType not in ["regular", "student", "senior"]:
     print("Invalid customer type!")
-    break
 
-show_time = int(input("Show time (hour in 24-hour format): "))
-if show_time < 9 or show_time > 22:
+
+showingSchedule = int(input("Show time (hour in 24-hour format): "))
+if showingSchedule < 9 or showingSchedule > 22:
     print("Invalid show time! Cinema operates from 9 to 22 only.")
-    break
 
 
 tickets = int(input("Number of tickets: "))
 if tickets <= 0:
     print("Invalid ticket count! Must be at least 1.")
-    break
+
 
 # Part B: Base pricing 
 if day in ["weekday", "weekdays"]:
@@ -33,47 +31,47 @@ subtotal = base_price * tickets
 total = subtotal
 
 # Part C: Customer discounts
-student_discount = 0.20
-senior_discount = 0.30
-matinee_discount = 0.10
-group_discount = 0.05  
+studentAppliedDiscount = 0.20
+seniorAppliedDiscount = 0.30
+matineeAppliedDiscount = 0.10
+groupAppliedDiscount = 0.05  
 
-applied_student = 0.0
-applied_senior = 0.0
-applied_matinee = 0.0
-applied_group = 0.0
+appliedStudent = 0.0
+appliedSenior = 0.0
+appliedMatinee = 0.0
+appliedGroup = 0.0
 
-if customer_type == "student":
-    applied_student = total * student_discount
-    total = total - applied_student
+if customerType == "student":
+    appliedStudent = total * studentAppliedDiscount
+    total = total - appliedStudent
 
-if customer_type == "senior":
-    applied_senior = total * senior_discount
-    total = total - applied_senior
+if customerType == "senior":
+    appliedSenior = total * seniorAppliedDiscount
+    total = total - appliedSenior
 
-if show_time < 12:
-    applied_matinee = total * matinee_discount
-    total = total - applied_matinee
+if showingSchedule < 12:
+    appliedMatinee = total * matineeAppliedDiscount
+    total = total - appliedMatinee
 
 if tickets >= 5:
-    applied_group = total * group_discount
-    total = total - applied_group
+    appliedGroup = total * groupAppliedDiscount
+    total = total - appliedGroup
 
 # Part D: Display Receipt
 print("\n--- RECEIPT ---")
 print(f"Base price: {base_price:.2f} x {tickets} = {subtotal:.2f}")
 
-if applied_student > 0:
-    print(f"Student discount (20%): -{applied_student:.2f}")
+if appliedStudent > 0:
+    print(f"Student discount (20%): -{appliedStudent:.2f}")
 
-if applied_senior > 0:
-    print(f"Senior discount (30%): -{applied_senior:.2f}")
+if appliedStudent > 0:
+    print(f"Senior discount (30%): -{appliedSenior:.2f}")
 
-if applied_matinee > 0:
-    print(f"Matinee discount (10%): -{applied_matinee:.2f}")
+if appliedMatinee > 0:
+    print(f"Matinee discount (10%): -{appliedMatinee:.2f}")
 
-if applied_group > 0:
-    print(f"Group discount (5%): -{applied_group:.2f}")
+if appliedGroup > 0:
+    print(f"Group discount (5%): -{appliedGroup:.2f}")
 
 print("-------------------------")
 print(f"TOTAL: {total:.2f}")
