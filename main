@@ -1,0 +1,28 @@
+import passwordGenerator as pasgen
+while True: 
+    enterPassLength = input("Enter password length: ")
+    if not enterPassLength.isdigit():
+        print("That is not a valid integer. Try again.\n")
+        continue
+    length = int(enterPassLength)
+    break
+
+
+while True:
+    enterUpperCase = input("Include uppercase? (yes/no): ").lower().strip()
+    if enterUpperCase in ["yes", "no"]:
+        use_upper = enterUpperCase == "yes"
+        break
+    print("Please type 'yes' or 'no'.\n")
+
+while True:
+    emterLowerCase = input("Include lowercase? (
+        yes/no): ").lower().strip()
+    if emterLowerCase in ["yes", "no"]:
+        use_lower = emterLowerCase == "yes"
+        break
+    print("Please type 'yes' or 'no'.\n")
+
+
+final_password = generate_password(length, use_upper, use_lower)
+print(f"\nYour generated password is: {final_password}")
