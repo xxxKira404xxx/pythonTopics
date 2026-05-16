@@ -26,3 +26,21 @@ while True:
 
 final_password = generate_password(length, use_upper, use_lower)
 print(f"\nYour generated password is: {final_password}")
+
+import random as rnd
+def generate_password(length, use_upper, use_lower):
+    pool = ""
+    if use_upper:
+        pool += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    if use_lower:
+        pool += "abcdefghijklmnopqrstuvwxyz"
+    
+    # Always include numbers as a baseline fallback
+    pool += "1234567890" 
+    
+    # Generate the actual password from the pool
+    password = "".join(rnd.choice(pool) for _ in range(length))
+    return password
+
+    
+    
