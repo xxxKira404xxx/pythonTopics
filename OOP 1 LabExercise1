@@ -1,0 +1,39 @@
+#LabExercise1
+while True:
+    userName = str(input("Please input your name: "))
+    NumberOfMeals = int(input("How many meals have you ordered?: " ))
+    
+    totalMealAmount = 0 
+    finalBill = 0
+    
+    for i in range(NumberOfMeals):
+        pricePerMeal = float(input(f"Enter the price of meal{i + 1}: PHP  "))
+        
+        totalMealAmount += pricePerMeal
+    print("")
+    print (f"The total amount of the meal is PHP {totalMealAmount}")
+    
+    
+    if NumberOfMeals >= 10:
+        discount = totalMealAmount * (1 - 10 /100)
+        finalBill += discount
+        
+        print(f"\nCOSTUMER: {userName} Original bill is {totalMealAmount} and your final bill is {finalBill} with 10% discount! QUALIFIED WITH FREE DRINK")
+    elif NumberOfMeals >= 5 or totalMealAmount >= 400:
+        print(f"\nCOSTUMER: {userName} FINAL BILL is {totalMealAmount} QUALIFIED WITH FREE DRINK!")
+    else:
+        print(f"COSTUMER: {userName} FINAL BILL is {totalMealAmount}")
+
+cashierInput = input("Repeat ordering process? type anything except N to continue")
+if cashierInput == 'N':
+    break
+else:
+    continue
+
+        
+    
+
+    
+    
+    
+    
